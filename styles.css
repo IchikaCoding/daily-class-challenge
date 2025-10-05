@@ -3,6 +3,23 @@ body {
 }
 .header1 {
   text-align: center;
+  font-size: 3rem; /* 任意 */
+  font-weight: 700; /* 任意 */
+  background: linear-gradient(
+    180deg,
+    rgb(208, 19, 233),
+    orange,
+    yellow,
+    rgb(105, 194, 41),
+    cyan,
+    blue,
+    purple
+  );
+  /* 虹色の背景からテキスト部分だけに色をつける */
+  -webkit-background-clip: text;
+  background-clip: text;
+  /* 文字のデフォルトの塗りつぶし色（黒）を透明にする */
+  -webkit-text-fill-color: transparent;
 }
 .card-grid {
   display: grid;
