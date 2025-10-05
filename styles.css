@@ -1,3 +1,29 @@
 body {
-  background-color: rgba(17, 108, 77, 0.34);
+  background-color: rgba(17, 108, 96, 0.34);
+}
+.header1 {
+  text-align: center;
+}
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.card {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+.card__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.human::before {
+  content: "☺️";
+  font-size: 2rem;
+}
+.house::before {
+  content: "🏠";
+  font-size: 2rem;
 }
