@@ -7,13 +7,11 @@ body {
   font-weight: 700; /* 任意 */
   background: linear-gradient(
     135deg,
-    pink 0%,
-    orange 25%,
-    yellow 35%,
-    green 45%,
-    cyan 55%,
-    blue 65%,
-    purple 75%
+    rgb(227, 31, 64) 0%,
+    orange 45%,
+    yellow 55%,
+    /* green 45%, */ cyan 65%,
+    /* blue 65%, */ rgb(194, 134, 194) 75%
   );
   /* 虹色の背景からテキスト部分だけに色をつける */
   -webkit-background-clip: text;
