@@ -60,7 +60,47 @@ const ichikadonHouse = new House("いちかどんのお家", "親子丼の里1�
 // console.log(ichikaHouse);
 // console.log(ichikadonHouse);
 
+/** ケーキ屋さんクラス */
+class CakeShop {
+  horeizai = ["2個", "3個"];
+  items = [
+    "モンブラン",
+    "チーズケーキ",
+    "フルーツタルト",
+    "モモムース",
+    "マカロン",
+    "シュークリーム（カスタード，シューはパリパリ）",
+  ];
+  constructor(cakeShopName, cakeShopLocationName) {
+    this.name = cakeShopName;
+    this.location = cakeShopLocationName;
+    this.removeItems();
+  }
+
+  removeItems() {
+    this.items.pop();
+    return this;
+  }
+  addItems() {
+    this.items.push();
+    return this;
+  }
+  render() {
+    const article = document.createElement("article");
+    article.className = "card cakeShop";
+    article.innerHTML = `
+      <h2 class="card__title">${this.name}</h2>
+      <p>住所: ${this.location}</p>
+      <p>保冷剤: ${this.horeizai.join(" / ")}</p>
+      <p>商品: ${this.items.join(" / ")}</p>
+    `;
+    return article;
+  }
+}
+
+const ichikaCake = new CakeShop("いちかのケーキ屋さん", "親子丼の里2番地");
+
 const app = document.querySelector("#app");
-[happyIchika, ichikadon, ichikaHouse, ichikadonHouse]
+[happyIchika, ichikadon, ichikaHouse, ichikadonHouse, ichikaCake]
   .map((instance) => instance.render())
   .forEach((element) => app.appendChild(element));

@@ -36,9 +36,13 @@ body {
 }
 .human::before {
   content: "☺️";
-  font-size: 2rem;
+  font-size: 10rem;
 }
 .house::before {
   content: "🏠";
   font-size: 2rem;
+}
+.cakeShop::before {
+  content: "🍰";
+  font-size: 10rem;
 }
