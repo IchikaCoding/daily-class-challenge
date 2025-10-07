@@ -32,12 +32,36 @@ const ichikadon = new Human("いちかどん");
 // お家生成のためのクラス
 class House {
   furnishings = ["PC", "Laundry"];
-  meals = ["さつまいも", "キャラメルポップコーン", "いちかおうどん"];
+  meals = [
+    "さつまいも",
+    "さつまいも",
+    "さつまいも",
+    "キャラメルポップコーン",
+    "いちかおうどん",
+  ];
   houseplants = "cactus";
 
   constructor(houseName, locationName) {
     this.name = houseName;
     this.location = locationName;
+    this.removeMeals("さつまいも");
+  }
+  /**
+   * meals配列の中から消したい文字列を削除する処理
+   * 逆イテレーションで複数同じ要素があっても削除できるようにしている
+   * @param {string} targetMeal
+   */
+  removeMeals(targetMeal) {
+    for (let i = this.meals.length; i >= 0; i--) {
+      if (this.meals[i] === targetMeal) {
+        this.meals.splice(i, 1);
+        console.log(this.meals);
+      }
+    }
+  }
+
+  addMeals(mealName) {
+    this.meals.push(mealName);
   }
   render() {
     const article = document.createElement("article");
