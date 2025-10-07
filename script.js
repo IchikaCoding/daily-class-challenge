@@ -23,7 +23,7 @@ class Human {
   }
 }
 
-const happyIchika = new Human("ハッピーいちか");
+const happyIchika = new Human("ぽちぽちフレンズ");
 const ichikadon = new Human("いちかどん");
 
 // console.log(happyIchika);
@@ -44,7 +44,7 @@ class House {
   constructor(houseName, locationName) {
     this.name = houseName;
     this.location = locationName;
-    this.removeMeals("さつまいも");
+    // this.removeMeals("さつまいも");
   }
   /**
    * meals配列の中から消したい文字列を削除する処理
@@ -78,7 +78,7 @@ class House {
 }
 
 /** --Houseのインスタンスを生成する処理-- */
-const ichikaHouse = new House("いちかのハッピーなお家", "さつまいもの里1番地");
+const ichikaHouse = new House("ぽちぽちフレンズのお家", "さつまいもの里1番地");
 const ichikadonHouse = new House("いちかどんのお家", "親子丼の里1番地");
 
 // console.log(ichikaHouse);
