@@ -102,12 +102,12 @@ class CakeShop {
   //   "シュークリーム（カスタード，シューはパリパリ）",
   // ];
   items = {
-    モンブラン: 1,
-    チーズケーキ: 1,
-    フルーツタルト: 1,
-    モモムース: 1,
-    マカロン: 1,
-    "シュークリーム（カスタード，シューはパリパリ）": 1,
+    モンブラン: { price: 650, stock: 4 },
+    チーズケーキ: { price: 500, stock: 6 },
+    フルーツタルト: { price: 680, stock: 4 },
+    モモムース: { price: 440, stock: 2 },
+    マカロン: { price: 200, stock: 10 },
+    "シュークリーム（カスタード，シューはパリパリ）": { price: 250, stock: 10 },
   };
 
   constructor(cakeShopName, cakeShopLocationName) {
@@ -127,8 +127,9 @@ class CakeShop {
   render() {
     const article = document.createElement("article");
     const itemsText = Object.entries(this.items)
-      .map(([key, value]) => `${key}: ${value}個`)
+      .map(([key, { price, stock }]) => `${key}: ${price}円(${stock}個)`)
       .join(", ");
+    console.log(itemsText);
     article.className = "card cakeShop";
     article.innerHTML = `
       <h2 class="card__title">${this.name}</h2>
