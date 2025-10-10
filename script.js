@@ -113,21 +113,30 @@ class CakeShop {
   constructor(cakeShopName, cakeShopLocationName) {
     this.name = cakeShopName;
     this.location = cakeShopLocationName;
-    // this.removeItems();
   }
 
-  // removeItems() {
-  //   this.items.pop();
-  //   return this;
-  // }
-  // addItems() {
-  //   this.items.push();
-  //   return this;
-  // }
+  addItem(itemName, price, stock) {
+    // add a new cake or overwrite an existing one
+    // priceとかくと，{"price": price}と書かれたことと同じで省略可能！
+    this.items[itemName] = {
+      price,
+      stock: stock,
+    };
+    return this;
+  }
+
+  removeItem(itemName) {
+    delete this.items[itemName];
+    return this;
+  }
+
   render() {
     const article = document.createElement("article");
     const itemsText = Object.entries(this.items)
-      .map(([key, { price, stock }]) => `${key}: ${price}円(${stock}個)`)
+      .map(
+        ([key, { price: price, stock: stock }]) =>
+          `${key}: ${price}円(${stock}個)`
+      )
       .join(", ");
     console.log(itemsText);
     article.className = "card cakeShop";
@@ -142,8 +151,18 @@ class CakeShop {
 }
 
 const ichikaCake = new CakeShop("いちかのケーキ屋さん", "親子丼の里2番地");
+ichikaCake.addItem("季節のショートケーキ", 720, 5).removeItem("マカロン");
+console.log(ichikaCake.itemsText);
 
 const app = document.querySelector("#app");
 [happyIchika, ichikadon, ichikaHouse, ichikadonHouse, ichikaCake]
   .map((instance) => instance.render())
   .forEach((element) => app.appendChild(element));
+
+// // TODO 分割代入について学ぶ
+// function fff({ b, a }) {
+//   console.log(a); // 10
+//   console.log(b); // 20
+// }
+// const obj = { a: 10, b: 20 };
+// fff(obj);
