@@ -150,10 +150,14 @@ class CakeShop {
   }
 }
 
+/**
+ * addItemとremoveItemの検証用
+ */
 const ichikaCake = new CakeShop("いちかのケーキ屋さん", "親子丼の里2番地");
 ichikaCake.addItem("季節のショートケーキ", 720, 5).removeItem("マカロン");
 console.log(ichikaCake.itemsText);
 
+/** 画面に表示するrenderが実行される */
 const app = document.querySelector("#app");
 [happyIchika, ichikadon, ichikaHouse, ichikadonHouse, ichikaCake]
   .map((instance) => instance.render())
