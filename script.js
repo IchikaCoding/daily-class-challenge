@@ -14,7 +14,7 @@ class Human {
     const article = document.createElement("article");
     article.className = "card human";
     article.innerHTML = `
-      <h2 class="card__title">${this.name}</h2>
+      <h2 class="card_title">${this.name}</h2>
       <p>しあわせゲージ: ${this.happy}</p>
       <p>しあわせ付与パウダー: +${this.happyTurnPowder}</p>
       <p>スキル: ${this.skills.join(" / ")}</p>
@@ -72,7 +72,7 @@ class House {
       .join(", ");
     article.className = "card house";
     article.innerHTML = `
-      <h2 class="card__title">${this.name}</h2>
+      <h2 class="card_title">${this.name}</h2>
       <p>所在地: ${this.location}</p>
       <p>家具: ${this.furnishings.join(" / ")}</p>
       <p>ごはん: ${mealsText}</p>
@@ -93,14 +93,6 @@ const ichikadonHouse = new House("いちかどんのお家", "親子丼の里1�
 /** ケーキ屋さんクラス */
 class CakeShop {
   horeizai = ["2個", "3個"];
-  // items = [
-  //   "モンブラン",
-  //   "チーズケーキ",
-  //   "フルーツタルト",
-  //   "モモムース",
-  //   "マカロン",
-  //   "シュークリーム（カスタード，シューはパリパリ）",
-  // ];
   items = {
     モンブラン: { price: 650, stock: 4 },
     チーズケーキ: { price: 500, stock: 6 },
@@ -141,10 +133,14 @@ class CakeShop {
     console.log(itemsText);
     article.className = "card cakeShop";
     article.innerHTML = `
-      <h2 class="card__title">${this.name}</h2>
+      <h2 class="card_title">${this.name}</h2>
       <p>住所: ${this.location}</p>
       <p>保冷剤: ${this.horeizai.join(" / ")}</p>
       <p>商品: ${itemsText}</p>
+      <div class="button">
+      <button id="addButton">追加</button>
+      <button id="deleteButton">削除</button>
+    </div>
     `;
     return article;
   }

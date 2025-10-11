@@ -46,3 +46,35 @@ body {
   content: "🍰";
   font-size: 10rem;
 }
+
+.button {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.button button {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: rgb(17, 108, 96);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+  box-shadow: 0 4px 12px rgba(17, 108, 96, 0.3);
+}
+
+.button button:hover {
+  background: rgb(12, 85, 75);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(17, 108, 96, 0.35);
+}
+
+.button button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(17, 108, 96, 0.28);
+}
