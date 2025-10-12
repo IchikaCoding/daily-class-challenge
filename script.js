@@ -139,9 +139,10 @@ class CakeShop {
       <p>商品: ${itemsText}</p>
       <div class="button">
       <button id="addButton">追加</button>
-      <button id="deleteButton">削除</button>
+      <button id="removeButton">削除</button>
     </div>
     `;
+
     return article;
   }
 }
@@ -158,6 +159,43 @@ const app = document.querySelector("#app");
 [happyIchika, ichikadon, ichikaHouse, ichikadonHouse, ichikaCake]
   .map((instance) => instance.render())
   .forEach((element) => app.appendChild(element));
+
+// ボタンの処理とイベントの内容を書く
+// ここにDOM操作書く
+// 追加ボタンでやりたいこと
+function addBtnHandler() {}
+// 削除ボタンでやりたいこと
+// 商品名を入力→実行→その商品が削除（CakeShop.removeItem）
+// ダイアログを作成
+// 削除ボタンを押したらダイアログが開くようにする
+// クリックしたらダイアログが開くようにする
+// ダイアログに入力された商品名をitemName = removeItem.valueという引数としてremoveItemに渡される
+// 商品名を削除した画面をレンダーしたい
+function removeBtnHandler() {}
+
+const addButton = document.getElementById("addButton");
+const removeButton = document.getElementById("removeButton");
+
+addButton.addEventListener("click", addBtnHandler);
+removeButton.addEventListener("click", removeBtnHandler);
+
+/**
+ * ダイアログの処理（コピペ）
+ */
+const dialog = document.getElementById("dialog");
+// TODO 削除ボタンとして修正する
+const removeItem = document.getElementById("removeItem");
+const realRemoveBtn = document.getElementById("realRemoveBtn");
+console.log(removeItem.value);
+
+removeButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+// TODO これの処理にCakeShop.removeItemにしたらOK
+removeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  dialog.close();
+});
 
 // // TODO 分割代入について学ぶ
 // function fff({ b, a }) {
