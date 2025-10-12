@@ -1,4 +1,5 @@
 // 人間生成するためのクラス
+// TODO ぽちぽちフレンズといちかどんのインスタンスのスキルを個別二追加できるようにしておく
 class Human {
   happy = 1000;
   happyTurnPowder = 100;
@@ -185,14 +186,14 @@ removeButton.addEventListener("click", removeBtnHandler);
 const dialog = document.getElementById("dialog");
 // TODO 削除ボタンとして修正する
 const removeItem = document.getElementById("removeItem");
-const realRemoveBtn = document.getElementById("realRemoveBtn");
+const confirmToRemove = document.getElementById("confirmToRemove");
 console.log(removeItem.value);
 
 removeButton.addEventListener("click", () => {
   dialog.showModal();
 });
 // TODO これの処理にCakeShop.removeItemにしたらOK
-removeBtn.addEventListener("click", (e) => {
+confirmToRemove.addEventListener("click", (e) => {
   e.preventDefault();
   dialog.close();
 });
