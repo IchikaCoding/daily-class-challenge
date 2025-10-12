@@ -1,5 +1,7 @@
 // 人間生成するためのクラス
 // TODO ぽちぽちフレンズといちかどんのインスタンスのスキルを個別二追加できるようにしておく
+// TODO 永住ビザを発行してぽちぽちフレンズがゲットできるようにしておく
+// TODO ファイル分割をする
 class Human {
   happy = 1000;
   happyTurnPowder = 100;
@@ -182,22 +184,27 @@ removeButton.addEventListener("click", removeBtnHandler);
 
 /**
  * ダイアログの処理（コピペ）
+ * キャンセルボタンを押してもinputが送信されるようになっている
  */
 const dialog = document.getElementById("dialog");
 // TODO 削除ボタンとして修正する
-const removeItem = document.getElementById("removeItem");
+const removeItemName = document.getElementById("removeItemName");
 const confirmToRemove = document.getElementById("confirmToRemove");
-console.log(removeItem.value);
+const closeBtn = document.getElementById("closeBtn");
 
 removeButton.addEventListener("click", () => {
   dialog.showModal();
 });
+closeBtn.addEventListener("click", () => {
+  dialog.close();
+});
 // TODO これの処理にCakeShop.removeItemにしたらOK
 confirmToRemove.addEventListener("click", (e) => {
   e.preventDefault();
-  dialog.close();
+  dialog.close(); // なぜここは書かないと閉じられないのか？
 });
 
+console.log({ value: removeItemName.value });
 // // TODO 分割代入について学ぶ
 // function fff({ b, a }) {
 //   console.log(a); // 10
