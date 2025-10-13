@@ -45,7 +45,7 @@ class House {
   constructor(houseName, locationName) {
     this.name = houseName;
     this.location = locationName;
-    // TODO sweetPotatoesを減らす方法を考える
+
     // delete this.meals.sweetPotatoes;
     // this.removeMeals("さつまいも");
   }
@@ -163,10 +163,29 @@ const app = document.querySelector("#app");
   .map((instance) => instance.render())
   .forEach((element) => app.appendChild(element));
 
+const addButton = document.getElementById("addButton");
+const removeButton = document.getElementById("removeButton");
+
+/**
+ * ダイアログの処理（コピペ）
+ * キャンセルボタンを押してもinputが送信されるようになっている
+ */
+// TODO キャンセルボタンを押したときにも送信されている問題
+/** ダイアログ要素 */
+const dialog = document.getElementById("dialog");
+// TODO 削除ボタンとして修正する
+/** 削除確定ボタンの要素 */
+const confirmToRemove = document.getElementById("confirmToRemove");
+/** キャンセルボタンの要素 */
+const closeBtn = document.getElementById("closeBtn");
+/** 入力された削除したい商品の要素 */
+const removeItemName = document.getElementById("removeItemName");
+let confirmedRemoveItemName = "";
 // ボタンの処理とイベントの内容を書く
 // ここにDOM操作書く
 // 追加ボタンでやりたいこと
-function addBtnHandler() {}
+// function addBtnHandler() {}
+
 // 削除ボタンでやりたいこと
 // 商品名を入力→実行→その商品が削除（CakeShop.removeItem）
 // ダイアログを作成
@@ -174,37 +193,39 @@ function addBtnHandler() {}
 // クリックしたらダイアログが開くようにする
 // ダイアログに入力された商品名をitemName = removeItem.valueという引数としてremoveItemに渡される
 // 商品名を削除した画面をレンダーしたい
-function removeBtnHandler() {}
+function removeBtnHandler() {
+  dialog.showModal();
+  console.log("removeButtonが押された");
+}
 
-const addButton = document.getElementById("addButton");
-const removeButton = document.getElementById("removeButton");
+/** 削除確定ボタンのハンドラ */
+// inputの中身を取ってくる
+// それを削除ボタンを押したときに引数として渡す
+// クリックイベントが実行
+function getRemoveItemName() {
+  console.log("removeItemNameをゲットした");
+}
 
-addButton.addEventListener("click", addBtnHandler);
+function confirmBtnHandler(e) {
+  e.preventDefault();
+  dialog.close(); // なぜここは書かないと閉じられないのか？
+  console.log({ value: removeItemName.value });
+  console.log("confirmToRemoveが押された");
+}
+
+// TODO ハンドラのところにコンソールで確認用の文章を追加
+// addButton.addEventListener("click", addBtnHandler);
+/** ダイアログを開くイベント */
 removeButton.addEventListener("click", removeBtnHandler);
 
-/**
- * ダイアログの処理（コピペ）
- * キャンセルボタンを押してもinputが送信されるようになっている
- */
-const dialog = document.getElementById("dialog");
-// TODO 削除ボタンとして修正する
-const removeItemName = document.getElementById("removeItemName");
-const confirmToRemove = document.getElementById("confirmToRemove");
-const closeBtn = document.getElementById("closeBtn");
-
-removeButton.addEventListener("click", () => {
-  dialog.showModal();
-});
+/** キャンセルボタンのイベント */
 closeBtn.addEventListener("click", () => {
   dialog.close();
 });
 // TODO これの処理にCakeShop.removeItemにしたらOK
-confirmToRemove.addEventListener("click", (e) => {
-  e.preventDefault();
-  dialog.close(); // なぜここは書かないと閉じられないのか？
-});
+/** 削除確定ボタンのイベント */
+confirmToRemove.addEventListener("click", confirmBtnHandler);
 
-console.log({ value: removeItemName.value });
 // // TODO 分割代入について学ぶ
 // function fff({ b, a }) {
 //   console.log(a); // 10
