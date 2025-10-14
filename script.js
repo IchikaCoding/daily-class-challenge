@@ -2,6 +2,7 @@
 // TODO ぽちぽちフレンズといちかどんのインスタンスのスキルを個別二追加できるようにしておく
 // TODO 永住ビザを発行してぽちぽちフレンズがゲットできるようにしておく
 // TODO ファイル分割をする
+// TODO 商品ではないものが入力されたときの削除の処理を追加
 class Human {
   happy = 1000;
   happyTurnPowder = 100;
@@ -139,7 +140,7 @@ class CakeShop {
       <h2 class="card_title">${this.name}</h2>
       <p>住所: ${this.location}</p>
       <p>保冷剤: ${this.horeizai.join(" / ")}</p>
-      <p>商品: ${itemsText}</p>
+      <p class="cake-shop-items">商品: ${itemsText}</p>
       <div class="button">
       <button id="addButton">追加</button>
       <button id="removeButton">削除</button>
@@ -157,6 +158,7 @@ const ichikaCake = new CakeShop("いちかのケーキ屋さん", "親子丼の�
 ichikaCake.addItem("季節のショートケーキ", 720, 5).removeItem("マカロン");
 console.log(ichikaCake.itemsText);
 
+// TODO （仮）ここを修正してケーキ屋さんが複製されないようにする
 /** 画面に表示するrenderが実行される */
 const app = document.querySelector("#app");
 [happyIchika, ichikadon, ichikaHouse, ichikadonHouse, ichikaCake]
@@ -173,7 +175,6 @@ const removeButton = document.getElementById("removeButton");
 // TODO キャンセルボタンを押したときにも送信されている問題
 /** ダイアログ要素 */
 const dialog = document.getElementById("dialog");
-// TODO 削除ボタンとして修正する
 /** 削除確定ボタンの要素 */
 const confirmToRemove = document.getElementById("confirmToRemove");
 /** キャンセルボタンの要素 */
@@ -203,17 +204,36 @@ function removeBtnHandler() {
 // それを削除ボタンを押したときに引数として渡す
 // クリックイベントが実行
 function getRemoveItemName() {
+  console.log({ value: removeItemName.value });
   console.log("removeItemNameをゲットした");
+  return removeItemName.value;
 }
 
 function confirmBtnHandler(e) {
   e.preventDefault();
+  const confirmedRemoveItemName = getRemoveItemName();
+  if (!confirmedRemoveItemName) {
+    console.log("削除したい商品名を入力してから confirm を押してね。");
+    return;
+  }
+  // TODO originalCakeShopを使わずにichikaCakeというインスタンスを使用して操作したほうがいいのか？
+  ichikaCake.removeItem(confirmedRemoveItemName);
+  let originalCakeShop = document.querySelector(".cakeShop");
+  // itemsにはクラス名がcake-shop-itemsのp要素が入っている？
+  items = originalCakeShop.querySelector(".cake-shop-items");
+  console.log(items);
+  // TODO 処理がわからなくなったからもう一度考える
+  items.textContent = `商品: ${Object.entries(ichikaCake.items)
+    .map(([key, { price: price, stock }]) => `${key}: ${price}円(${stock}個)`)
+    .join(", ")}`;
+  console.log(items.textContent);
+  console.log(`削除する商品：${confirmedRemoveItemName}`);
+  console.log("削除確定ボタンが押されたよ♪");
   dialog.close(); // なぜここは書かないと閉じられないのか？
-  console.log({ value: removeItemName.value });
-  console.log("confirmToRemoveが押された");
 }
+/** 削除確定ボタンのイベント */
+confirmToRemove.addEventListener("click", confirmBtnHandler);
 
-// TODO ハンドラのところにコンソールで確認用の文章を追加
 // addButton.addEventListener("click", addBtnHandler);
 /** ダイアログを開くイベント */
 removeButton.addEventListener("click", removeBtnHandler);
@@ -222,9 +242,6 @@ removeButton.addEventListener("click", removeBtnHandler);
 closeBtn.addEventListener("click", () => {
   dialog.close();
 });
-// TODO これの処理にCakeShop.removeItemにしたらOK
-/** 削除確定ボタンのイベント */
-confirmToRemove.addEventListener("click", confirmBtnHandler);
 
 // // TODO 分割代入について学ぶ
 // function fff({ b, a }) {
