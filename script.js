@@ -156,7 +156,7 @@ class CakeShop {
  */
 const ichikaCake = new CakeShop("いちかのケーキ屋さん", "親子丼の里2番地");
 ichikaCake.addItem("季節のショートケーキ", 720, 5).removeItem("マカロン");
-console.log(ichikaCake.itemsText);
+console.log(ichikaCake);
 
 // TODO （仮）ここを修正してケーキ屋さんが複製されないようにする
 /** 画面に表示するrenderが実行される */
@@ -208,7 +208,11 @@ function getRemoveItemName() {
   console.log("removeItemNameをゲットした");
   return removeItemName.value;
 }
-
+/**
+ *
+ * @param {*} e
+ * @returns
+ */
 function confirmBtnHandler(e) {
   e.preventDefault();
   const confirmedRemoveItemName = getRemoveItemName();
@@ -219,13 +223,19 @@ function confirmBtnHandler(e) {
   // TODO originalCakeShopを使わずにichikaCakeというインスタンスを使用して操作したほうがいいのか？
   ichikaCake.removeItem(confirmedRemoveItemName);
   let originalCakeShop = document.querySelector(".cakeShop");
+  console.log(originalCakeShop);
   // itemsにはクラス名がcake-shop-itemsのp要素が入っている？
   items = originalCakeShop.querySelector(".cake-shop-items");
   console.log(items);
-  // TODO 処理がわからなくなったからもう一度考える
+  // TODO この処理は要復習！！！！！
+  // 白のハイライト(price)がキー，オレンジのほうのpriceが値
+  // TODO アロー関数の右側を波括弧で囲むと挙動わかるかも！
   items.textContent = `商品: ${Object.entries(ichikaCake.items)
-    .map(([key, { price: price, stock }]) => `${key}: ${price}円(${stock}個)`)
-    .join(", ")}`;
+    .map(
+      ([name, { price: pricePram, stock: stockParam }]) =>
+        `${name}: ${pricePram}円(${stockParam}個)`
+    )
+    .join("🤤")}`;
   console.log(items.textContent);
   console.log(`削除する商品：${confirmedRemoveItemName}`);
   console.log("削除確定ボタンが押されたよ♪");
@@ -240,6 +250,7 @@ removeButton.addEventListener("click", removeBtnHandler);
 
 /** キャンセルボタンのイベント */
 closeBtn.addEventListener("click", () => {
+  console.log("closeBtnが押されました");
   dialog.close();
 });
 
