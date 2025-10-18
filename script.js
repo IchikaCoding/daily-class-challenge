@@ -215,6 +215,8 @@ function getRemoveItemName() {
  */
 function confirmBtnHandler(e) {
   e.preventDefault();
+  console.log(e);
+  console.log(e.preventDefault);
   const confirmedRemoveItemName = getRemoveItemName();
   if (!confirmedRemoveItemName) {
     console.log("削除したい商品名を入力してから confirm を押してね。");
