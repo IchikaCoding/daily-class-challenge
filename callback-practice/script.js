@@ -30,7 +30,7 @@
 
 // callLater(timesTwo);
 
-// ----------------------------------
+// ------Q3---------------------------
 
 function callLater(cbFunc) {
   const arr = [10, 20, 30]; // ← 配列を用意！
@@ -50,3 +50,72 @@ function timesTwo(n) {
 
 const outputArr = callLater(timesTwo); // outputArrが受け取ったのは、赤い🟥の位置情報
 console.log("結果まとめ:", outputArr);
+
+/**
+ * 6章-1
+ * @param {number} n
+ * @returns
+ */
+
+// function funcDouble(n) {
+//   return n * 2;
+// }
+
+// const nums = [1, 2, 3];
+// const doubled = nums.map(funcDouble); // map に関数を渡す
+// console.log("6章-1：", doubled); // [2, 4, 6]
+
+/**
+ * 6章-2
+ */
+
+// const nums = [1, 2, 3];
+// const doubled = nums.map((n) => n * 2);
+// console.log("6章-2：", doubled); // [2, 4, 6]
+
+/**
+ * 7章目-Q1-for文で書く
+ */
+// const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
+// const dstArray = [];
+
+// for (let i = 0; i < srcArray.length; i++) {
+//   if (srcArray[i] % 2 === 0) {
+//     dstArray.push(srcArray[i]);
+//   }
+//   console.log(`結果${i}：`, dstArray);
+// }
+// console.log("最終結果", dstArray);
+
+/**
+ * 7章目-Q2-for ofで書く
+ */
+
+// const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
+// const dstArray = [];
+
+// for (const n of srcArray) {
+//   if (n % 2 === 0) {
+//     dstArray.push(n);
+//   }
+// }
+
+// console.log("7章目-Q1の答え：", dstArray);
+
+/**
+ * 7章目-Q3-関数を外に出す
+ */
+
+const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
+const dstArray = [];
+
+function isEven(n) {
+  return n % 2 === 0;
+}
+
+for (const n of srcArray) {
+  if (isEven(n)) {
+    dstArray.push(n);
+  }
+}
+console.log("最終結果", dstArray);
