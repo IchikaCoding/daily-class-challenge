@@ -2,7 +2,7 @@
 // TODO 永住ビザを発行してぽちぽちフレンズがゲットできるようにしておく
 // TODO 商品ではないものが入力されたときの削除の処理を追加
 
-import { Human, House, CakeShop } from "./classes";
+import { Human, House, CakeShop } from "./classes.js";
 
 // 人間生成するためのクラス
 // class Human {
