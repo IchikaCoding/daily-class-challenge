@@ -1,7 +1,7 @@
 /**
  * 人間生成のためのクラス
  */
-class Human {
+export class Human {
   happy = 1000;
   happyTurnPowder = 100;
   skills = ["泣く", "笑う", "食べる"];
@@ -28,7 +28,7 @@ class Human {
 /**
  * お家生成のためのクラス
  */
-class House {
+export class House {
   furnishings = ["PC", "Laundry"];
   meals = {
     さつまいも: 3,
@@ -82,7 +82,7 @@ class House {
 }
 
 /** ケーキ屋さんクラス */
-class CakeShop {
+export class CakeShop {
   horeizai = ["2個", "3個"];
   items = {
     モンブラン: { price: 650, stock: 4 },
