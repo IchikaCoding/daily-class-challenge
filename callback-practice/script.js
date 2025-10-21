@@ -151,3 +151,44 @@ console.log("結果まとめ:", outputArr);
 const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
 const dstArray = srcArray.filter((n) => n % 2 === 0);
 console.log(`Q5：`, dstArray);
+
+// -----ここから下がアロー関数の練習
+
+/**
+ * 奇数の配列を取り出す練習
+ */
+
+// const ichikaArray = [14, 25, 49, 77, 88, 93, 103, 180, 279];
+// const oddArray = ichikaArray.filter((n) => n % 2 !== 0);
+// console.log("奇数の配列：", oddArray);
+
+/**
+ * 3桁の数字を取り出す処理
+ *
+ */
+// const ichikaArray = ["14", "25", "49", "77", "88", "93", "103", "180", "279"];
+// const oddArray = ichikaArray.filter((n) => n.length === 3);
+// console.log("3桁の配列：", oddArray);
+
+/**
+ * タルトという文字を含んでいるかチェック
+ */
+const ichikaArray = [
+  "紅芋タルト",
+  "プリン",
+  "フルーツタルト",
+  "シフォンケーキ",
+];
+const tartArray = ichikaArray.filter((n) => n.includes("タルト"));
+console.log("タルトを含む配列：", tartArray);
+
+const array = [1, 2, 3];
+console.log(array.filter((n) => n === 2));
+// 予想される結果: [2]
+
+// これ自力で書けたえらい✨️
+const numArray = [1, 2, 3];
+String(numArray);
+const stringArray = numArray.map((n) => String(n));
+console.log("できた？", stringArray);
+// 予想される結果: [2]

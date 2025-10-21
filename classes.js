@@ -6,6 +6,10 @@ export class Human {
   happyTurnPowder = 100;
   skills = ["泣く", "笑う", "食べる"];
 
+  /**
+   * インスタンス生成と同時に実行される
+   * コンストラクタです
+   */
   constructor(name) {
     this.name = name;
   }
