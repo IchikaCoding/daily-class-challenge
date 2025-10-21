@@ -106,16 +106,48 @@ console.log("結果まとめ:", outputArr);
  * 7章目-Q3-関数を外に出す
  */
 
+// const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
+// const dstArray = [];
+
+// function isEven(n) {
+//   return n % 2 === 0;
+// }
+
+// for (const n of srcArray) {
+//   if (isEven(n)) {
+//     dstArray.push(n);
+//   }
+// }
+// console.log("最終結果", dstArray);
+
+/**
+ * 8章 - filter を使う
+ */
+
+// function isEven(n) {
+//   console.log(n % 2 === 0);
+//   return n % 2 === 0;
+// }
+
+// const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
+// const dstArray = srcArray.filter(isEven);
+
+// console.log(dstArray); // [10, 2, 4, 8, 2]
+
+// const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
+// function isEven(n, idx, arr) {
+//   console.log(`value=${n}, index=${idx}, src=${arr}`);
+//   return n % 2 === 0;
+// }
+
+// const dstArray = srcArray.filter(isEven);
+
+// console.log(dstArray); // [10, 2, 4, 8, 2]
+
+/**
+ * Q5 filterをアロー関数で書いてみる✨️
+ */
+
 const srcArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
-const dstArray = [];
-
-function isEven(n) {
-  return n % 2 === 0;
-}
-
-for (const n of srcArray) {
-  if (isEven(n)) {
-    dstArray.push(n);
-  }
-}
-console.log("最終結果", dstArray);
+const dstArray = srcArray.filter((n) => n % 2 === 0);
+console.log(`Q5：`, dstArray);
