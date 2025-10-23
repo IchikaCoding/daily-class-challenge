@@ -189,6 +189,54 @@ console.log(array.filter((n) => n === 2));
 // これ自力で書けたえらい✨️
 const numArray = [1, 2, 3];
 String(numArray);
+//TODO .map(String)でも同じになる理由を考える
 const stringArray = numArray.map((n) => String(n));
 console.log("できた？", stringArray);
 // 予想される結果: [2]
+
+// function String(s) {
+//   return s.toString();
+// }
+
+/**
+ * アロー関数じゃないバージョン
+ * このstring関数がJSにあるからnumArray.map(String)でも上記ノコードと同じになる
+ * @param {number} s
+ * @returns
+ */
+function string(s) {
+  return s.toString();
+}
+const newArray = numArray.map(string);
+console.log("これ文字列にできた？", newArray);
+
+/**
+ * 偶数の配列を作り直す処理
+ */
+const numbers = [14, 25, 49, 77, 88, 93, 103, 180, 279];
+const guNumArray = numbers.filter((n) => n % 2 === 0);
+console.log("偶数の配列お試し", guNumArray);
+
+/**
+ * 奇数の配列を作り直す処理
+ */
+const kiNumArray = numbers.filter((n) => n % 2 !== 0);
+console.log("奇数の配列お試し", kiNumArray);
+
+/**
+ * 睡眠時間が不足している人にコンソールからのメッセージ
+ * 7時間未満の人集めた配列を作る
+ * 名前の配列を作成
+ * おつかれさま！nameArray(i)郎さん✨️?時間睡眠不足だよ♪
+ */
+const sleepTimes = [4, 8, 6, 5];
+
+const nameArray = sleepTimes.map((_, idx) => `${idx + 1}郎さん`);
+console.log(nameArray);
+for (let i = 0; i < sleepTimes.length; i++) {
+  if (sleepTimes[i] < 7) {
+    console.log(`おつちか！！${nameArray[i]}`);
+  }
+}
+const sleepDeficitHumanArray = sleepTimes.filter((n) => n < 7);
+console.log("お疲れさま▶", sleepDeficitHumanArray);
