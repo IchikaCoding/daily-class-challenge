@@ -229,14 +229,26 @@ console.log("奇数の配列お試し", kiNumArray);
  * 名前の配列を作成
  * おつかれさま！nameArray(i)郎さん✨️?時間睡眠不足だよ♪
  */
-const sleepTimes = [4, 8, 6, 5];
+// const sleepTimes = [4, 8, 6, 5];
 
-const nameArray = sleepTimes.map((_, idx) => `${idx + 1}郎さん`);
-console.log(nameArray);
-for (let i = 0; i < sleepTimes.length; i++) {
-  if (sleepTimes[i] < 7) {
-    console.log(`おつちか！！${nameArray[i]}`);
-  }
-}
-const sleepDeficitHumanArray = sleepTimes.filter((n) => n < 7);
-console.log("お疲れさま▶", sleepDeficitHumanArray);
+// const nameArray = sleepTimes.map((_, idx) => `${idx + 1}郎さん`);
+// console.log(nameArray);
+// for (let i = 0; i < sleepTimes.length; i++) {
+//   if (sleepTimes[i] < 7) {
+//     console.log(`おつちか！！${nameArray[i]}`);
+//   }
+// }
+// const sleepDeficitHumanArray = sleepTimes.filter((n) => n < 7);
+// console.log("お疲れさま▶", sleepDeficitHumanArray);
+
+// 名前と睡眠時間のセットを作成
+// 7時間未満の人の睡眠時間配列を作成
+// おつかれさま！をそれぞれの要素に対して行う
+// おつかれさま！睡眠時間の配列
+
+const sleepTimes = [4, 8, 6, 5];
+const pochipochiFriends = sleepTimes.map((sleepTime, idx) => ({
+  name: `${idx + 1}郎さん`,
+  sleepTime,
+}));
+console.log("ぽちぽちフレンズのお名前は？", pochipochiFriends);
