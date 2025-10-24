@@ -275,3 +275,46 @@ for (const n of originalArray) {
   }
 }
 console.log("nullArrayはこちら▶", nullArray);
+
+/**
+ * setTimeoutの練習
+ */
+setTimeout(function () {
+  console.log("1秒後に実行");
+}, 1000);
+
+setTimeout(() => {
+  console.log("アロー関数の1秒後");
+}, 1000);
+
+setTimeout(
+  (arg1) => {
+    console.log("こちら！" + arg1);
+  },
+  1000,
+  "こんちくわ"
+);
+
+/**
+ * setIntervalを使ってみる
+ */
+// function helloLater(arg1) {
+//   arg1.count++;
+//   console.log(`こんちくわ ${arg1.count}回目`);
+//   console.log(arg1);
+// }
+
+// setInterval(helloLater, 1000, { count: 0 });
+
+/**
+ * こんちかー！！〇〇回目が1秒後にでる
+ */
+
+// function startHelloLater() {
+//   let count = 0;
+//   setInterval(() => {
+//     count++;
+//     console.log(`こんちかー！${count}回目`);
+//   }, 1000);
+// }
+// startHelloLater();
