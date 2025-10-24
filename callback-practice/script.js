@@ -262,3 +262,16 @@ const friendsSleepArray = sleepyPeople.map(
   (friend) => friend.sleepTime + "時間"
 );
 console.log("お疲れさま✨️睡眠不足の人の睡眠時間はこちら▶", friendsSleepArray);
+
+/**
+ * for of の練習をしてみるの巻
+ */
+const originalArray = [10, 2, 4, 5, 8, 3, 7, 2, 7];
+const nullArray = [];
+
+for (const n of originalArray) {
+  if (n % 2 === 0) {
+    nullArray.push(n);
+  }
+}
+console.log("nullArrayはこちら▶", nullArray);
