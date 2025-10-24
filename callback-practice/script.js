@@ -252,3 +252,13 @@ const pochipochiFriends = sleepTimes.map((sleepTime, idx) => ({
   sleepTime,
 }));
 console.log("ぽちぽちフレンズのお名前は？", pochipochiFriends);
+
+const sleepyPeople = pochipochiFriends.filter((n) => n.sleepTime < 7);
+console.log("眠い人たち", sleepyPeople);
+
+sleepyPeople.forEach((friend) => console.log(`お疲れさま☕${friend.name}`));
+
+const friendsSleepArray = sleepyPeople.map(
+  (friend) => friend.sleepTime + "時間"
+);
+console.log("お疲れさま✨️睡眠不足の人の睡眠時間はこちら▶", friendsSleepArray);
