@@ -93,7 +93,8 @@ function confirmBtnHandler(e) {
   let originalCakeShop = document.querySelector(".cakeShop");
   console.log(originalCakeShop);
   // itemsにはクラス名がcake-shop-itemsのp要素が入っている？
-  items = originalCakeShop.querySelector(".cake-shop-items");
+  // TODO なぜかエラーになっているから修正
+  const items = originalCakeShop.querySelector(".cake-shop-items");
   console.log(items);
   // TODO この処理は要復習！！！！！
   // 白のハイライト(price)がキー，オレンジのほうのpriceが値
