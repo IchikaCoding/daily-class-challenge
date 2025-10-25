@@ -1,3 +1,5 @@
+import { HelloCounter } from "./classes.js";
+
 // function callLater(cbFunc) {
 //   const result = cbFunc(10); // ← ( )を付けることで、「引数」で渡された位置にある関数を「実行」
 //   console.log("結果:", result);
@@ -328,18 +330,18 @@ setTimeout(
  * インスタンスを生成
  */
 
-class HelloCounter {
-  constructor(interval = 1000) {
-    this.count = 0;
-    this.timer = setInterval(() => {
-      this.count++;
-      console.log(`こんちか～♪${this.count}回目`);
-    }, interval);
-    console.log("this.timerの中身チェック", this.timer);
-  }
-  stop() {
-    clearInterval(this.timer);
-  }
-}
+// class HelloCounter {
+//   constructor(interval = 1000) {
+//     this.count = 0;
+//     this.timer = setInterval(() => {
+//       this.count++;
+//       console.log(`こんちか～♪${this.count}回目`);
+//     }, interval);
+//     console.log("this.timerの中身チェック", this.timer);
+//   }
+//   stop() {
+//     clearInterval(this.timer);
+//   }
+// }
 const helloCounterInstance = new HelloCounter();
 helloCounterInstance.stop();
