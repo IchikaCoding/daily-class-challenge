@@ -318,3 +318,28 @@ setTimeout(
 //   }, 1000);
 // }
 // startHelloLater();
+
+/**
+ * halloCounterクラスの生成
+ * インターバルの初期値が1000
+ * カウントは0
+ * タイマーがインターバルでこんにちは〇〇回目を表示，1000ミリ秒ごとに実行
+ * ストップさせる
+ * インスタンスを生成
+ */
+
+class HelloCounter {
+  constructor(interval = 1000) {
+    this.count = 0;
+    this.timer = setInterval(() => {
+      this.count++;
+      console.log(`こんちか～♪${this.count}回目`);
+    }, interval);
+    console.log("this.timerの中身チェック", this.timer);
+  }
+  stop() {
+    clearInterval(this.timer);
+  }
+}
+const helloCounterInstance = new HelloCounter();
+helloCounterInstance.stop();
