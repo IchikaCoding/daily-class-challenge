@@ -20,5 +20,21 @@
     <div class="header1">
       <h1>コールバック練習場<br />＠ポセイドン</h1>
     </div>
+    <!-- フェイントのソフトクリームボタンを配置して押したかどうかをコンソールに出す -->
+    <button id="softBtn">ソフトクリーム</button>
+    <script>
+      // (e)を引数にする理由は？
+      // →イベントを引数にしてブラウザからイベントオブジェクトを受け取るようにしている
+      // 無名関数バージョンと，普通のfunctionのバージョンを書いてみよう
+      // const softBtn = document.getElementById("softBtn");
+      // softBtn.addEventListener("click", (e) => {
+      //   console.log("ソフトクリームボタン押したぞ！！");
+      //   console.log(e);
+      // });
+      // const softBtn = document.getElementById("softBtn");
+      // softBtn.addEventListener("click", function (e) {
+      //   console.log("ソフトクリームボタンの処理は無名関数です～");
+      // });
+    </script>
   </body>
 </html>
