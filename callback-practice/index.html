@@ -35,6 +35,12 @@
       // softBtn.addEventListener("click", function (e) {
       //   console.log("ソフトクリームボタンの処理は無名関数です～");
       // });
+      function mowFunc(e) {
+        console.log("関数は別で書いてみた🐮");
+        console.log(e);
+      }
+      const softBtn = document.getElementById("softBtn");
+      softBtn.addEventListener("click", mowFunc);
     </script>
   </body>
 </html>
