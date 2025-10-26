@@ -428,3 +428,12 @@ console.log(
   "map関数を自作した結果：",
   myMap(nums, (n) => n * 2)
 );
+/**
+ * 12章目ー小テスト05
+ * 文字列を2倍にする処理も完成
+ */
+const worldArray = ["ha", "pa", "mo"];
+console.log(
+  "文字列配列",
+  myMap(worldArray, (s) => s + s)
+);
