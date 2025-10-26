@@ -363,3 +363,47 @@ function makeAdder(x) {
 }
 const IchikadonFunc10 = makeAdder(10); //ここが渡す側，関数を呼び出す
 console.log("これある？？？", IchikadonFunc10(5));
+
+/**
+ * 12章目ー小テスト01
+ */
+function runTwice(cb) {
+  cb();
+  cb();
+}
+
+function ping() {
+  console.log("ping");
+}
+
+runTwice(ping);
+
+/**
+ * 12章目ー小テスト02
+ */
+// 計算を行う関数（演算処理を引数として受け取る）
+function calculate(num1, num2, operation) {
+  return operation(num1, num2);
+}
+
+// 掛け算を行う関数
+function multiply(a, b) {
+  return a * b;
+}
+
+// 実行
+console.log("小テスト02確認：", calculate(3, 4, multiply));
+
+/**
+ * 12章目ー小テスト03
+ */
+const arr = [1, 2, 3, 4, 5];
+const out = arr.map((n) => {
+  return n % 2 === 0 ? n * 2 : n;
+});
+console.log("outの確認👇️");
+console.log(out);
+
+/**
+ * 12章目ー小テスト03
+ */
