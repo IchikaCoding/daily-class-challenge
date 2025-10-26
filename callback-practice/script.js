@@ -345,3 +345,21 @@ setTimeout(
 // }
 const helloCounterInstance = new HelloCounter();
 helloCounterInstance.stop();
+
+/**
+ * 高階関数の練習
+ */
+
+// makeAdderを定義
+// 実引数を渡して実行して変数に入れる
+// 実引数を渡して実行
+// コンソール
+
+function makeAdder(x) {
+  // 引数を受け取る側，関数の定義部分
+  return function (y) {
+    return x + y;
+  };
+}
+const IchikadonFunc10 = makeAdder(10); //ここが渡す側，関数を呼び出す
+console.log("これある？？？", IchikadonFunc10(5));
