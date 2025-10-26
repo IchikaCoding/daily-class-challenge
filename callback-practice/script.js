@@ -424,8 +424,7 @@ function myMap(array, callBack) {
   return result;
 }
 const nums = [1, 2, 3, 4];
-const twice = (n) => {
-  return n * 2;
-};
-
-console.log("map関数を自作した結果：", myMap(nums, twice));
+console.log(
+  "map関数を自作した結果：",
+  myMap(nums, (n) => n * 2)
+);
