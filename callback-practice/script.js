@@ -405,5 +405,27 @@ console.log("outの確認👇️");
 console.log(out);
 
 /**
- * 12章目ー小テスト03
+ * 12章目ー小テスト04
  */
+// 配列とコールバックを引数として受け取れる関数を定義
+// 結果の配列を入れるための変数を用意
+// 配列の要素分だけ繰り返す処理を追加
+// コールバックに配列を渡して変数に追加
+// 結果を配列に追加
+// 配列を定義
+// 配列の要素を2倍にする処理を書く
+// 出力
+function myMap(array, callBack) {
+  const result = [];
+  for (let i = 0; i < array.length; i++) {
+    const r = callBack(array[i]);
+    result.push(r);
+  }
+  return result;
+}
+const nums = [1, 2, 3, 4];
+const twice = (n) => {
+  return n * 2;
+};
+
+console.log("map関数を自作した結果：", myMap(nums, twice));
