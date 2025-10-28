@@ -504,3 +504,28 @@ console.log("文字列フィルターの結果：", myFilter(words, hasLength));
  * 12章目ー小テスト08
  * いろいろな「長さ」をもつデータを myFilter にかけてみよう
  */
+
+const objArray = [
+  [1, 5, 10],
+  100,
+  +"333333333",
+  "",
+  { 種類: "大剣", length: 2 },
+  { 名前: "大きな糞", 詳細: "すごく おおきな のぐそ", count: 1 },
+  { nano: "バナナ" },
+  (a, b, c) => a + b + c,
+  [],
+  "イチカ",
+];
+console.log("objArrayの結果01▶", myFilter(objArray, hasLength));
+console.log("objArrayの結果02▶", objArray.filter(hasLength));
+// arity（関数の引数の個数）を調べるための処理
+console.log("引数の個数：", ((a, b, c) => a + b + c).length);
+
+/**
+ * undefinedは0より大きい？
+ */
+let ichikaDonDon = {};
+console.log("検証中ichikaDonDon▶", ichikaDonDon.length > 0);
+
+console.log("検証中undefined▶", undefined.length);
