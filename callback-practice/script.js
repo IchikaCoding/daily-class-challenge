@@ -437,3 +437,30 @@ console.log(
   "文字列配列",
   myMap(wordArray, (s) => s + s)
 );
+/**
+ * 12章目ー小テスト06
+ * 自作のmyFilterを作ってみよう
+ * 偶数だけを取り出すフィルターを作成する
+ */
+
+const chikaArray = [1, 2, 3, 4];
+
+/**
+ * 偶数か奇数かを判定する関数
+ * @param {number} n
+ * @returns
+ */
+function isEven(n) {
+  return n % 2 === 0;
+}
+/**
+ * 新しい配列を作成する関数
+ */
+function myFilter(array, callBack) {
+  const result = [];
+  for (let i = 0; i < chikaArray.length.length; i++) {
+    const r = callBack(array[i]);
+    result.push(r);
+  }
+}
+console.log("myFilterの結果：", myFilter(chikaArray, isEven()));
