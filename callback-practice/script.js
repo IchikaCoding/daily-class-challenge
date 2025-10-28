@@ -443,22 +443,43 @@ console.log(
  * 偶数だけを取り出すフィルターを作成する
  */
 
-const chikaArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+// const chikaArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+// /**
+//  * 偶数か奇数かを判定する関数
+//  * @param {number} n
+//  * @returns
+//  */
+// function isOdd(n) {
+//   return n % 2 !== 0;
+// }
+// /**
+//  * 新しい配列を作成する関数
+//  */
+// function myFilter(array, callBack) {
+//   const result = [];
+//   for (let i = 0; i < chikaArray.length; i++) {
+//     if (callBack(array[i])) {
+//       const r = array[i];
+//       result.push(r);
+//     }
+//   }
+//   return result;
+// }
+// console.log("myFilterの結果：", myFilter(chikaArray, isOdd));
 
 /**
- * 偶数か奇数かを判定する関数
- * @param {number} n
- * @returns
+ * 12章目ー小テスト06(再🎉✨️)
+ * 偶数でフィルターして新しい偶数だけの配列を作成する
  */
-function isOdd(n) {
-  return n % 2 !== 0;
+const chikaDonArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+function isEven(n) {
+  return n % 2 === 0;
 }
-/**
- * 新しい配列を作成する関数
- */
+
 function myFilter(array, callBack) {
   const result = [];
-  for (let i = 0; i < chikaArray.length; i++) {
+  for (let i = 0; i < array.length; i++) {
     if (callBack(array[i])) {
       const r = array[i];
       result.push(r);
@@ -466,4 +487,5 @@ function myFilter(array, callBack) {
   }
   return result;
 }
-console.log("myFilterの結果：", myFilter(chikaArray, isOdd));
+
+console.log("再現コードあってる～？✨️", myFilter(chikaDonArray, isEven));
