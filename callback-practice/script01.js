@@ -488,3 +488,19 @@ function myFilter(array, callBack) {
   return result;
 }
 console.log("再現コードあってる～？✨️", myFilter(chikaDonArray, isEven));
+
+/**
+ * 12章目ー小テスト07
+ * myFilter を「文字列」に使ってみよう
+ */
+function hasLength(e) {
+  return e.length > 0;
+}
+
+const words = ["apple", "", "banana", "", "strawberry"];
+console.log("文字列フィルターの結果：", myFilter(words, hasLength));
+
+/**
+ * 12章目ー小テスト08
+ * いろいろな「長さ」をもつデータを myFilter にかけてみよう
+ */
