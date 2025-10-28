@@ -480,12 +480,11 @@ function isEven(n) {
 function myFilter(array, callBack) {
   const result = [];
   for (let i = 0; i < array.length; i++) {
-    if (callBack(array[i])) {
-      const r = array[i];
+    const r = array[i];
+    if (callBack(r)) {
       result.push(r);
     }
   }
   return result;
 }
-
 console.log("再現コードあってる～？✨️", myFilter(chikaDonArray, isEven));
