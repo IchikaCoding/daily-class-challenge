@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>DIGITAL TOKEI</title>
+    <style>
+      /* DSEG14 Classic 400 Normal をCDNから直指定 */
+      @font-face {
+        font-family: "DSEG14 Classic";
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url("https://cdn.jsdelivr.net/fontsource/fonts/dseg14-classic@latest/latin-400-normal.woff2")
+          format("woff2");
+      }
+      #tokei {
+        font-family: "DSEG14 Classic", monospace;
+        font-size: 80px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="tokei">00:00:00</div>
+    <script>
+      /**
+       * 24時間表記で，2桁ずつ時：分：秒を表示する関数
+       */
+      function getTimeString() {
+        const now = new Date();
+        const timeStr = now.toLocaleTimeString("ja-JP", {
+          hour12: false,
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        });
+        return timeStr;
+      }
+      // 👇️ ここに追加
+      // timeStrで画面を上書きしたい
+      //   それを毎秒繰り返す
+
+      //   id=tokeiを取得して画面に反映される
+      const tokei = document.getElementById("tokei");
+      function updateClock() {
+        tokei.textContent = getTimeString();
+      }
+      //
+      updateClock();
+      setInterval(updateClock, 1000);
+      //   console.log(tokei.textContent);
+      //   console.log(getTimeString());
+    </script>
+  </body>
+</html>
