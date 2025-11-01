@@ -61,11 +61,27 @@ const personPockets = [
   { name: "カレーパン", isStolenBread: "false" },
   { name: "塩バターパン", isStolenBread: "false" },
   { name: "メロンパン", isStolenBread: "true" },
+  { name: "プリン", isStolenBread: "false" },
+  { name: "フランスパン", isStolenBread: "false" },
 ];
 
 function identifyFunc(personPocket) {
   return personPocket.isStolenBread === "true";
 }
 
-const identifyBread = personPockets.filter(identifyFunc);
-console.log("盗人が盗んだパンはこれ▶", identifyBread[0].name);
+const identifyItems = personPockets.filter(identifyFunc);
+console.log("identifyItemsの中身は？", identifyItems);
+// TODO どうやったら一つ以上の要素のnameを取得できるかな？
+// for文で繰り返す方法ならできそう？
+// for (let i = 0; i < identifyItems.length; i++) {
+//   console.log("盗人が盗んだ商品はこれ▶", identifyItems[i].name);
+// }
+
+// ガード節を追加したバージョン
+if (identifyItems.length === 0) {
+  console.log("盗人は何も盗みませんでした（盗人なのに）");
+} else {
+  identifyItems.forEach((identifyItem) =>
+    console.log("盗人が盗んだ商品はこれ▶", identifyItem.name)
+  );
+}
