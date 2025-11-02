@@ -151,3 +151,21 @@ console.log(total);
 
 // console.log(fruitCounts);
 // // 実行結果: { Apple: 3, Banana: 2, Orange: 1 }
+
+// ーーーーーーーーー練習ーーーーーーーーーーー
+// 💡ヒント：fruitCounts[fruit] がすでにあるかどうかを if で確認。
+// あれば +1、なければ 1 を代入。
+
+const fruits = ["Apple", "Banana", "Apple", "Orange", "Banana", "Apple"];
+const fruitCounts = {}; // ← 空のオブジェクトでカウント開始！
+for (const fruit of fruits) {
+  // 👇 ここに処理を追記しよう
+  if (fruitCounts[fruit]) {
+    fruitCounts[fruit] += 1;
+  } else {
+    fruitCounts[fruit] = 1;
+  }
+}
+
+console.log(fruitCounts);
+// 期待する結果: { Apple: 3, Banana: 2, Orange: 1 }
