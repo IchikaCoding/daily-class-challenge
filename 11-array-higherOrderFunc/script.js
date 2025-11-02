@@ -156,11 +156,15 @@ console.log(total);
 // 💡ヒント：fruitCounts[fruit] がすでにあるかどうかを if で確認。
 // あれば +1、なければ 1 を代入。
 
+/** @type {string[]} */
 const fruits = ["Apple", "Banana", "Apple", "Orange", "Banana", "Apple"];
+// TODO Recordの意味は？→動的にオブジェクトを生成している→レコードしている？
+/** @type {Object.<string, number>} */
 const fruitCounts = {}; // ← 空のオブジェクトでカウント開始！
+
 for (const fruit of fruits) {
   // 👇 ここに処理を追記しよう
-  if (fruitCounts[fruit]) {
+  if (fruitCounts[fruit] !== undefined) {
     fruitCounts[fruit] += 1;
   } else {
     fruitCounts[fruit] = 1;
@@ -169,3 +173,17 @@ for (const fruit of fruits) {
 
 console.log(fruitCounts);
 // 期待する結果: { Apple: 3, Banana: 2, Orange: 1 }
+
+// ーーーーーーーーーーー🌸 sort() / toSorted() メソッド 🌸ーーーーーーーーーーーーーー
+/**
+ *
+ */
+
+const exArray = [10, 2, 20, 1];
+
+// [0, 1, 2, 3] という「インデックス配列」を作る
+const index = exArray.map((_, i) => i);
+console.log("index", index);
+const order = index.sort((a, b) => exArray[a] - exArray[b]);
+console.log(order);
+// [3, 1, 0, 2]
