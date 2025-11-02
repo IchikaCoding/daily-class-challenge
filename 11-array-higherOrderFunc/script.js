@@ -184,6 +184,11 @@ const exArray = [10, 2, 20, 1];
 // [0, 1, 2, 3] という「インデックス配列」を作る
 const index = exArray.map((_, i) => i);
 console.log("index", index);
+console.log("index", JSON.stringify(index));
+
+// これから👇️を実行するとソートされるよ
 const order = index.sort((a, b) => exArray[a] - exArray[b]);
-console.log(order);
+console.log("order", order);
+console.log("order", JSON.stringify(order));
+
 // [3, 1, 0, 2]
