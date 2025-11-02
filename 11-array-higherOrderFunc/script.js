@@ -85,3 +85,69 @@ if (identifyItems.length === 0) {
     console.log("盗人が盗んだ商品はこれ▶", identifyItem.name)
   );
 }
+
+// filter() のみバージョンを作る
+// 18歳以上の人が1人でもいたら，trueを返す
+// filterを使って書く
+
+const users = [
+  { name: "Alice", age: 25 },
+  { name: "Bob", age: 15 },
+  { name: "Charlie", age: 30 },
+];
+
+/**
+ * ユーザーの年齢が18以上かどうかを判定する真偽判定処理
+ * @param {{name: string, age: number}} user
+ * @returns {boolean}
+ */
+function isAdultUser(user) {
+  return user.age >= 18;
+}
+
+const adultUserArray = users.filter(isAdultUser);
+console.log("成人たちはこの人▶", adultUserArray);
+function checkAdultUsers(adultUserArray) {
+  return adultUserArray.length >= 1;
+}
+console.log("全部の真偽を判定：", checkAdultUsers(adultUserArray));
+
+/**
+ * ーーーーーーreduce()メソッドの練習ーーーーーーー
+ */
+
+const numberArray = [10, 20, 30, 40];
+
+function func(sum, newValue) {
+  console.log(sum + newValue);
+  return sum + newValue;
+}
+const total = numberArray.reduce(func, 0);
+console.log(total);
+
+/**
+ * 果物の集計
+ */
+
+// const fruits = ["Apple", "Banana", "Apple", "Orange", "Banana", "Apple"];
+
+// // 欲しい結果: { Apple: 3, Banana: 2, Orange: 1 }
+
+// // 鍋（counts）に {} (空のオブジェクト) をセット
+// function calucFruit(counts, fruitName) {
+//   // 1. (counts) オブジェクトに、(fruitName) というキーが既にあるか？
+//   if (counts[fruitName]) {
+//     // 2. あれば、そのキーの値を +1 する
+//     counts[fruitName] = counts[fruitName] + 1;
+//   } else {
+//     // 3. なければ、新しいキーとして 1 をセットする
+//     counts[fruitName] = 1;
+//   }
+//   // 4. 次のループのために、更新した (counts) オブジェクトを返す
+//   return counts;
+// }
+
+// const fruitCounts = fruits.reduce(calucFruit, {}); // 👈 初期値 (counts の最初の値) を {} (空のオブジェクト) に設定
+
+// console.log(fruitCounts);
+// // 実行結果: { Apple: 3, Banana: 2, Orange: 1 }
