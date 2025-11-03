@@ -194,7 +194,36 @@ console.table(order);
 console.log("order", JSON.stringify(order));
 // [3, 1, 0, 2]
 
+/** Array.from()の動作確認 */
 console.log(Array.from("foo"));
 // 予想される結果: Array ["f", "o", "o"]
 console.log(Array.from([1, 2, 3], (x) => x + x));
 // 予想される結果: Array [2, 4, 6]
+
+/**
+ * sortのお練習タイム
+ */
+const charArray = [
+  { name: "リュウガ", hp: 120, mp: 30 },
+  { name: "セイラ", hp: 80, mp: 90 },
+  { name: "ゴーレム", hp: 200, mp: 10 },
+  { name: "ミナト", hp: 95, mp: 60 },
+  { name: "カゲロウ", hp: 70, mp: 110 },
+  { name: "オロチ", hp: 150, mp: 40 },
+];
+
+const withPower = charArray.map((char, index) => {
+  return {
+    index: index,
+    char: char,
+    power: char.hp + char.mp,
+  };
+});
+
+/**
+ * withPowerのcharだけを一覧で確認したいです
+ * 配列の中のcharのオブジェクトだけを指定する必要がある
+ *
+ */
+console.log("withPower", withPower);
+withPower.forEach((item) => console.log(item.char));
