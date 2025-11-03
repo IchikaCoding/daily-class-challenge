@@ -225,5 +225,10 @@ const withPower = charArray.map((char, index) => {
  * 配列の中のcharのオブジェクトだけを指定する必要がある
  *
  */
-console.log("withPower", withPower);
+console.log("総合パワー一覧（index付き）:");
+console.table(withPower);
 withPower.forEach((item) => console.log(item.char));
+
+const sortedWithIndex = withPower.toSorted((a, b) => a.power - b.power);
+console.log("弱い順（index付き）:");
+console.table(sortedWithIndex);
