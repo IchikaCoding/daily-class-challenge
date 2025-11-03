@@ -223,7 +223,6 @@ const withPower = charArray.map((char, index) => {
 /**
  * withPowerのcharだけを一覧で確認したいです
  * 配列の中のcharのオブジェクトだけを指定する必要がある
- *
  */
 console.log("総合パワー一覧（index付き）:");
 console.table(withPower);
@@ -232,3 +231,22 @@ withPower.forEach((item) => console.log(item.char));
 const sortedWithIndex = withPower.toSorted((a, b) => a.power - b.power);
 console.log("弱い順（index付き）:");
 console.table(sortedWithIndex);
+
+// ーーーーーーーーーー　ステップ3はここから　ーーーーーーーーーーーー
+// 最弱キャラと最強キャラを表示
+// それぞれ，元のindexとキャラ情報を表示する
+const weakest = sortedWithIndex[0];
+const strongest = sortedWithIndex.at(-1);
+
+console.log("最弱キャラ：");
+console.log("  元のindex:", weakest.index);
+console.log("  キャラ情報:", weakest.char);
+
+console.log("最強キャラ：");
+console.log("  元のindex:", strongest.index);
+console.log("  キャラ情報:", strongest.char);
+
+console.log("もとの配列が壊れていないカナ？:", charArray);
+/**
+ *
+ */
