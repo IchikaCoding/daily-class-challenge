@@ -248,5 +248,57 @@ console.log("  キャラ情報:", strongest.char);
 
 console.log("もとの配列が壊れていないカナ？:", charArray);
 /**
- *
+ * ーーーーーーーーーーーーーソートのお練習ーーーーーーーーーーーーーーーーー
  */
+
+const posArray = [
+  { x: 3, y: 10 },
+  { x: 10, y: 3 },
+  { x: 5, y: 5 },
+  { x: 8, y: 1 },
+  { x: 1, y: 8 },
+  { x: 7, y: 7 },
+];
+
+const dist2Array = posArray.map((p) => p.x ** 2 + p.y ** 2);
+console.log("距離²の配列:", dist2Array);
+
+const withIndexDistance = posArray.map((p, i) => {
+  return {
+    index: i,
+    pos: p,
+    dist2: dist2Array[i],
+  };
+});
+console.table(withIndexDistance);
+
+const sortedDistance = withIndexDistance.toSorted((a, b) => a.dist2 - b.dist2);
+console.log("結果：", sortedDistance);
+
+console.log("最も近い点:");
+console.log("  元のindex:", sortedDistance[0].index);
+console.log("  座標:", sortedDistance[0].pos);
+
+console.log("最も遠い点:");
+console.log("  元のindex:", sortedDistance.at(-1).index);
+console.log("  座標:", sortedDistance.at(-1).pos);
+
+// ーーーーーーーーー　ちょっと危険　ーーーーーーーーーーーー
+
+const maxX = Math.max(...posArray.map((p) => p.x));
+const maxY = Math.max(...posArray.map((p) => p.y));
+
+// y 軸を上向きに描きたければ rows を maxY から 0 へループする
+const rows = [];
+for (let y = maxY; y >= 0; y--) {
+  // TODO Array(n)でn個の要素を持った配列を作っているらしい
+  const row = Array(maxX + 1).fill(" .");
+  posArray.forEach((p, i) => {
+    // TODO padStartって何？
+    if (p.y === y) row[p.x] = String(i).padStart(2, " ");
+  });
+  // TODO ""というのは何？
+  rows.push(row.join(""));
+}
+// TODO なぜ改行がfor文に入ってないの？
+console.log(rows.join("\n"));
