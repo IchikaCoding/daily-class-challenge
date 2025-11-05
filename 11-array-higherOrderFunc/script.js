@@ -285,22 +285,45 @@ console.log("  座標:", sortedDistance.at(-1).pos);
 
 // ーーーーーーーーー　ちょっと危険　ーーーーーーーーーーーー
 
-const maxX = Math.max(...posArray.map((p) => p.x));
-const maxY = Math.max(...posArray.map((p) => p.y));
+const newXArray = posArray.map((p) => p.x);
+const maxX = Math.max(...newXArray);
+console.table(newXArray);
+console.log("Xの最大は？:", maxX);
+// const maxX = Math.max(...posArray.map((p) => p.x)); // Math.maxは渡した数値の最大値を返し、...は配列を個々の引数に展開し、map((p) => p.x)で各要素からx座標だけを抽出した配列を作る
 
-// y 軸を上向きに描きたければ rows を maxY から 0 へループする
-const rows = [];
+// const maxY = Math.max(...posArray.map((p) => p.y)); // y座標版で、map((p) => p.y)でyだけを抽出し、その最大値で縦方向の範囲を決める
+const newYArray = posArray.map((p) => p.y);
+const maxY = Math.max(...newYArray);
+console.table(newYArray);
+console.log("Yの最大は？:", maxY);
+// y軸を上向きに描くために、最大のyから0まで逆順で処理するという意図を説明するコメント
+
+/** コンソールに表示される座標のｘ軸とY軸のデータを入れる配列 */
+const rows = []; // ここで空の配列を用意し、後で1行ずつの文字列表現を追加していく
+// TODO なぜか値が入ってる！！！
+console.log("元データ:", JSON.stringify(rows));
 for (let y = maxY; y >= 0; y--) {
-  // TODO Array(n)でn個の要素を持った配列を作っているらしい
-  const row = Array(maxX + 1).fill(" .");
+  // for文でyを最大値から0まで1ずつ減らしながら処理する（y--は1を引く演算子）
+  /** X軸のとんとんとんを意味する(row=行) */
+  const row = Array(maxX + 1).fill(" ."); // Array(maxX + 1)でx座標の最大値に合わせた長さの配列を作り、fill(" .")で全要素を" ."という文字列で埋める
+  console.log("rowの確認", structuredClone(row));
+  // console.log("rowの確認", JSON.stringify(row));
+  // p：配列の各要素，i：インデックス
   posArray.forEach((p, i) => {
-    // TODO padStartって何？
+    // forEachは配列の全要素に順番に処理を行うメソッドで、(p, i) => {...}は要素pとインデックスiを受け取るアロー関数
+    /** ｙ軸が見ている行（y）がビーコンのｙ軸（p.y）の位置と同じか確認
+     * 同じだったら，そこのX軸にインデックス番号を入力する処理を実行
+     * 2桁の数字と揃うように，1桁の数字ではスペースを前側に入れる処理も同時に実行
+     */
     if (p.y === y) {
-      row[p.x] = String(i).padStart(2, " ");
-    }
-  });
-  // TODO ""というのは何？
-  rows.push(row.join(""));
-}
-// TODO なぜ改行がfor文に入ってないの？
+      // ===は型と値を両方比較する厳密等価演算子で、点pのy座標が現在の行yと一致するかどうかを判定している
+      row[p.x] = String(i).padStart(2, " "); // row[p.x]でx座標に対応する位置を指定し、String(i)で数字を文字列化し、padStart(2, " ")で文字数が2になるまで左側にスペースを足す
+    } // if文のブロックをここで閉じる
+  }); // forEachによる繰り返し処理をここで終了する
+  rows.push(row.join("")); // join("")は配列を区切りなしで1つの文字列に連結し、pushでその行をrows配列の末尾に追加する
+} // for文のブロックをここで閉じる
+// console.log("rowsの中身▶", JSON.parse(JSON.stringify(rows)));
+
+console.log("rowsの中身▶", structuredClone(rows));
+console.log(rows.join("✨️")); // console.logで結果を表示し、join("\n")で各行を改行コード"\n"で繋げて複数行として出力する
 console.log(rows.join("\n"));
