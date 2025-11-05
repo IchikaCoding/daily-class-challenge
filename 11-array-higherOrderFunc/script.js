@@ -295,7 +295,9 @@ for (let y = maxY; y >= 0; y--) {
   const row = Array(maxX + 1).fill(" .");
   posArray.forEach((p, i) => {
     // TODO padStartって何？
-    if (p.y === y) row[p.x] = String(i).padStart(2, " ");
+    if (p.y === y) {
+      row[p.x] = String(i).padStart(2, " ");
+    }
   });
   // TODO ""というのは何？
   rows.push(row.join(""));
