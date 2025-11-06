@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>XY Position</title>
+<style>
+  /* 点（●）の色 */
+  .pt {
+    fill: #5555ff;
+  }
+
+  /* ラベル文字の見た目 */
+  text {
+    font: 0.8px sans-serif;
+    fill: #222;
+  }
+</style>
+
+<!-- 16×16 の座標平面として使う -->
+<svg id="plot" viewBox="0 0 16 16">
+  <!-- x軸 -->
+  <line x1="0" y1="0" x2="15" y2="0" stroke="#444" stroke-width="0.05" />
+  <!-- y軸 -->
+  <line x1="0" y1="0" x2="0" y2="15" stroke="#444" stroke-width="0.05" />
+</svg>
+
+<script>
+  /* 描画する点（座標）の一覧（配列） */
+  const posArray = [
+    { x: 3, y: 10 },
+    { x: 10, y: 3 },
+    { x: 5, y: 5 },
+    { x: 8, y: 1 },
+    { x: 1, y: 8 },
+    { x: 7, y: 7 },
+  ];
+
+  /* SVG 要素を作るときに毎回必要になる名前空間 */
+  const ns = "http://www.w3.org/2000/svg";
+
+  /* 描画先となる <svg> */
+  const svg = document.getElementById("plot");
+
+  /* 属性をまとめて設定する関数 */
+  function setAttribute(el, attrs) {
+    for (const [k, v] of Object.entries(attrs)) {
+      el.setAttribute(k, v);
+    }
+  }
+
+  /* 原点(0,0) の位置情報 */
+  const origin = { x: 0, y: 0 };
+
+  /* 原点の表示テキスト */
+  const originLabel = document.createElementNS(ns, "text");
+  setAttribute(originLabel, {
+    x: origin.x + 0.1,
+    y: origin.y + 0.8,
+  });
+  originLabel.textContent = `(${origin.x},${origin.y})`;
+  svg.appendChild(originLabel);
+
+  /* 各点までの距離を、順に計算して新しい配列にする (Math.hypot=ベクトルの長さ) */
+  const distanceArray = posArray.map((pos) => Math.hypot(pos.x, pos.y));
+
+  /* 距離の中で最も小さいもの（最も近い点） */
+  const nearestDistance = Math.min(...distanceArray);
+
+  /* 距離の中で最も大きいもの（最も遠い点） */
+  const farthestDistance = Math.max(...distanceArray);
+
+  /* 原点を中心とした「最も近い点の距離」を示す円 */
+  const nearCircle = document.createElementNS(ns, "circle");
+  setAttribute(nearCircle, {
+    cx: origin.x,
+    cy: origin.y,
+    r: nearestDistance,
+    stroke: "#bbb",
+    "stroke-width": "0.05",
+    fill: "none",
+  });
+  svg.appendChild(nearCircle);
+
+  /* 原点を中心とした「最も遠い点の距離」を示す円 */
+  const farCircle = document.createElementNS(ns, "circle");
+  setAttribute(farCircle, {
+    cx: origin.x,
+    cy: origin.y,
+    r: farthestDistance,
+    stroke: "#bbb",
+    "stroke-width": "0.05",
+    fill: "none",
+  });
+  svg.appendChild(farCircle);
+
+  /* 配列のすべての点を描画する */
+  for (const pos of posArray) {
+    /* 点（●）を描画 */
+    const point = document.createElementNS(ns, "circle");
+    setAttribute(point, {
+      cx: pos.x,
+      cy: pos.y,
+      r: 0.18,
+      class: "pt",
+    });
+    svg.appendChild(point);
+
+    /* その点に座標ラベルを表示 */
+    const label = document.createElementNS(ns, "text");
+    setAttribute(label, {
+      x: pos.x + 0.3,
+      y: pos.y + 0.2,
+    });
+    label.textContent = `(${pos.x},${pos.y})`;
+    svg.appendChild(label);
+  }
+</script>
