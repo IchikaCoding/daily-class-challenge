@@ -283,6 +283,19 @@ console.log("最も遠い点:");
 console.log("  元のindex:", sortedDistance.at(-1).index);
 console.log("  座標:", sortedDistance.at(-1).pos);
 
+// 複数の最小・最大距離にも対応
+const minDist2 = sortedDistance[0].dist2;
+const maxDist2 = sortedDistance.at(-1).dist2;
+
+const nearestPoints = sortedDistance.filter((p) => p.dist2 === minDist2);
+const farthestPoints = sortedDistance.filter((p) => p.dist2 === maxDist2);
+
+console.log("最も近い点（複数対応）:");
+console.table(nearestPoints);
+
+console.log("最も遠い点（複数対応）:");
+console.table(farthestPoints);
+
 // ーーーーーーーーー　ちょっと危険　ーーーーーーーーーーーー
 
 const newXArray = posArray.map((p) => p.x);
