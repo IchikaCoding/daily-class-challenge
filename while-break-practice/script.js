@@ -67,3 +67,85 @@ while (codexOne <= 7) {
   console.log("3でも7でもないとき", codexOne);
   codexOne++;
 }
+
+// ーーーーーーcontinue でスキップーーーーーー
+let nFour = 1;
+while (nFour <= 5) {
+  if (nFour % 2 === 0) {
+    nFour++;
+    continue;
+  }
+  console.log({ nFour });
+  nFour++;
+}
+
+// ーーーーーーprompt を使って正解するまで聞くーーーーーー
+
+// const answer = "JS";
+// let input = "";
+
+// while (input !== answer) {
+//   input = prompt("「JS」と入力すると正解です！");
+//   /** キャンセルボタンを押したときに実行される処理 */
+//   if (input === null) {
+//     console.log("キャンセルで終了");
+//     break;
+//   }
+// }
+
+// if (input === answer) {
+//   console.log("正解！おめでとう🎉");
+// }
+
+// ーーーーーーーー配列を while で回すーーーーーーーー
+
+const fruitArray = ["🍋‍🟩", "🍊", "🍓"];
+let idx = 0;
+
+while (idx < fruitArray.length) {
+  console.log(idx, fruitArray[idx]);
+  idx++;
+}
+
+// TODO 無限ループ対策のコードを実践してみる
+
+// ーーーーーーーー練習ドリル 💪ーーーーーーーー
+// ーーーーーーーー1〜100 の合計ーーーーーーーー
+
+/**
+ * nFiveが1で初期化
+ * nFive <= 100まで繰り返す
+ * sum = nFive + sum
+ * nFive++;
+ * console.log({sum})
+ */
+
+let nFive = 1;
+let sum = 0;
+
+while (nFive <= 100) {
+  sum += nFive;
+  nFive++;
+}
+console.log({ sum }); // 5050
+
+// ーーーーーーーー3 の倍数だけ表示 (〜15)ーーーーーーーー
+
+/**
+ * nSix = 1で初期化
+ * nSix <= 15
+ * もしnSix%3 === 0, コンソールにnSixを表示,nSix++
+ * nSix++
+ */
+
+let nSix = 1;
+let values = [];
+while (nSix <= 15) {
+  if (nSix % 3 === 0) {
+    values.push(nSix);
+    console.log("values", values);
+    nSix++;
+  }
+  nSix++;
+}
+console.log("カンマ区切りの表示", values.join(","));
