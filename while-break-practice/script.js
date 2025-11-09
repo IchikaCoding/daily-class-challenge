@@ -151,3 +151,81 @@ while (nSix <= 15) {
 console.log("カンマ区切りの表示", values.join(","));
 
 // ーーーーーーーーパスワード（最大 3 回）ーーーーーーーー
+
+const answer = "ichika";
+// TODO 状態管理フラグは-1,1で管理するのとfalseで管理するのとどっちがいいのか
+let isAuthenticated = false;
+let tries = 0;
+
+/**
+ * 3未満のとき繰り返す処理
+ * promptの返り値をinputに代入する
+ * キャンセルされたら終了，break
+ * 失敗だったらisAuthenticated = false;
+ * 成功だったらisAuthenticated = true;, break
+ * tries++
+ */
+// while (tries < 3) {
+//   // TODO どうして失敗のときの処理の中にプロンプトがあるの？
+//   const input = prompt("パスワードを入力（最大3回）");
+//   //   成功したときの処理
+//   if (input === answer) {
+//     isAuthenticated = true;
+//     break;
+//   }
+//   //   if (input !== answer) {
+//   //     console.log("失敗…また挑戦してね🐤");
+//   //   }
+//   //   キャンセルのときの処理
+//   if (input === null) {
+//     console.log("キャンセルで終了");
+//     break;
+//   }
+//   if (input === "") {
+//     console.log("なにか入力してください");
+//   }
+//   tries++;
+// }
+
+// // isAuthenticatedが真か偽かでコンソールの表示を変える
+// // if (isAuthenticated) {
+// //   console.log("成功: ログイン成功✨");
+// // }
+// // 三項演算子バージョンで書いてみる，失敗の処理を省略
+// console.log(isAuthenticated ? "成功: ログイン成功✨" : "失敗…また挑戦してね🐤");
+
+// ーーーーーーー11. 最後のチャレンジ ✍️ーーーーーーー
+
+/**
+ *
+ * stepsが8000以下なら繰り返す
+ * input = prompt()
+ * 0 以下や数値以外の入力は無視して再入力を促す
+ * もしinputがキャンセル→break
+ * もし0より大きい数値なら→steps = steps+ input
+ * stepsが8000以上ならOKが真
+ * コンソールを三項演算子でかく（OKが真なら→達成！，偽→頑張って偉い！また明日めげずに頑張ろう！）
+ */
+
+const goal = 8000;
+let steps = 0;
+
+while (steps < goal) {
+  const input = prompt(`現在の歩数は${steps}です。追加の歩数を入力してね♪`);
+  //   キャンセルのときの処理
+  //   キャンセルのときのOKの扱い方を考える
+  if (input === null) {
+    console.log("キャンセルで終了");
+    break;
+  }
+  const number = Number(input);
+  //   TODO 1以上かつ数値のときだけ実行する処理に変更
+  if (typeof number === "number" && number >= 1) {
+    steps += number;
+  }
+}
+
+console.log("合計の歩数→", steps);
+console.log(
+  steps >= goal ? "達成🎉" : "頑張って偉い！また明日めげずに頑張ろう！"
+);
